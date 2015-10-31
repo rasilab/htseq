@@ -310,6 +310,8 @@ cdef class GenomicPosition( GenomicInterval ):
    def copy( self ):
       return GenomicPosition( self.chrom, self.pos, self.strand )
       
+  def __add__( GenomicPosition self, other):
+      return GenomicPosition( self.chrom, self.pos + other, self.strand )
 
 cdef class ChromVector( object ):
 
