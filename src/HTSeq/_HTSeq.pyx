@@ -491,6 +491,7 @@ cdef class GenomicArray( object ):
    cdef public bint auto_add_chroms
    cdef readonly str storage
    cdef readonly str memmap_dir
+   cdef readonly str name
    
    def __init__( self, object chroms, bint stranded=True, str typecode='d',
          str storage='step', str memmap_dir = "", str name = "" ):
