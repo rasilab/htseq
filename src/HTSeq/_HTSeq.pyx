@@ -245,6 +245,9 @@ cdef class GenomicInterval:
    def copy( self ):
       return GenomicInterval( self.chrom, self.start, self.end, self.strand )
 
+   def narrow( self, start=0, end=0 ):
+      return GenomicInterval( self.chrom, self.start+start, self.end-end, self.strand )
+
 
 def GenomicInterval_from_directional( str chrom, long int start_d, long int length, str strand="." ):
    strand = intern( strand )
@@ -312,6 +315,9 @@ cdef class GenomicPosition( GenomicInterval ):
       
    def __add__( GenomicPosition self, other):
       return GenomicPosition( self.chrom, self.pos + other, self.strand )
+
+   def __sub__( GenomicPosition self, other):
+      return GenomicPosition( self.chrom, self.pos - other, self.strand )
 
 cdef class ChromVector( object ):
 

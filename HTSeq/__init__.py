@@ -551,12 +551,19 @@ class GenomicArrayOfSets( GenomicArray ):
    def __init__( self, chroms, stranded=True, storage='step', memmap_dir = "" ):
       GenomicArray.__init__( self, chroms, stranded, 'O', storage, memmap_dir )
 
+   # added by Rasi for pretty printing
+   def __str__( self ):
+       ivcount = 0
+       for fs,iv in self.steps():
+           if not len(fs):
+               ivcount += 1
+       return "GAS with %d ivs"%ivcount
+
    def add_chrom( self, chrom, length = sys.maxint, start_index = 0 ):
       GenomicArray.add_chrom( self, chrom, length, start_index )
       for cv in self.chrom_vectors[ chrom ].values():
          cv[:] = set()
          cv.is_vector_of_sets = True
-      
        
 ###########################
 ##   paired-end handling
