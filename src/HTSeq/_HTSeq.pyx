@@ -607,7 +607,7 @@ cdef class GenomicArray( object ):
       return _HTSeq_internal.GenomicArray_steps( self )
 
    def __str__( self ):
-       return self.name
+       return self.name + ":" + type(self)
       
        
 def _GenomicArray_unpickle( stranded, typecode, chrom_vectors ):
