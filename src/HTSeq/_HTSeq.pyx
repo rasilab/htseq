@@ -493,10 +493,11 @@ cdef class GenomicArray( object ):
    cdef readonly str memmap_dir
    
    def __init__( self, object chroms, bint stranded=True, str typecode='d',
-         str storage='step', str memmap_dir = "" ):
+         str storage='step', str memmap_dir = "", str name = "" ):
       self.chrom_vectors = {}
       self.stranded = stranded
       self.typecode = typecode
+      self.name = name
       self.auto_add_chroms = chroms == "auto"
       if self.auto_add_chroms:      
          chroms = []
@@ -603,6 +604,9 @@ cdef class GenomicArray( object ):
          
    def steps( self ):
       return _HTSeq_internal.GenomicArray_steps( self )
+
+   def __str__( self ):
+       return self.name
       
        
 def _GenomicArray_unpickle( stranded, typecode, chrom_vectors ):
