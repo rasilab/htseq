@@ -14,3 +14,11 @@ Once you are happy with the changes, run:
 ```
 
 This will generate the build directory.
+
+For version-control:
+```bash
+git add --all # the ignored files are in .gitignore
+git status -uno
+git commit -m "COMMIT_MESSAGE"
+git push -u origin master
+```
