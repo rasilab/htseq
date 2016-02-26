@@ -548,8 +548,8 @@ class GenomicArrayOfSets( GenomicArray ):
    the present set, and the set is split if necessary.
    """
 
-   def __init__( self, chroms, stranded=True, storage='step', memmap_dir = "" ):
-      GenomicArray.__init__( self, chroms, stranded, 'O', storage, memmap_dir )
+   def __init__( self, chroms, stranded=True, storage='step', memmap_dir = "", name= "" ):
+      GenomicArray.__init__( self, chroms, stranded, 'O', storage, memmap_dir, name )
 
    # added by Rasi for pretty printing
    def __str__( self ):
