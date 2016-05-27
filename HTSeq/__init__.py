@@ -946,7 +946,9 @@ class BAM_Reader( object ):
             yield SAM_Alignment.from_pysam_AlignedSegment( pa, sf )
             self.record_no += 1
     
-    def fetch( self, reference = None, start = None, end = None, region = None ):
+    def fetch( self, reference = None, start = None, end = None, region = None, interval = None ):
+        if interval: # if a GenomicInterval is given, convert it to a samtools 'region' string format. Rasi added
+            region = interval.chrom + ':' + str(iv.start) + '-' + str(iv.end)
         sf = pysam.Samfile(self.filename, "rb")
         self.record_no = 0
         try:
